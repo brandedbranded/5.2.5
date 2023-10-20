@@ -1,10 +1,26 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+@Entity
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Table(name = "book")
 public class BookTable {
-    private long id; //id автора в сервисе библиотеке (primary key)
-    private String book_title; //100
-    private long author_id; //id автора из таблицы Author (foreign key)
+
+    @Id
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "book_title")
+    private String bookTitle;
+
+    @Column(name = "author_id")
+    private long authorId;
+
+    @Column(name = "updated")
+    private Date updated;
 }
